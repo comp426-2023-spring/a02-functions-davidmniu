@@ -25,7 +25,6 @@ const hasE = ("e" in argv && !isNaN(argv["e"]));
 const hasW = ("w" in argv && !isNaN(argv["w"]));
 
 if ((!hasN && !hasS) || (!hasE && !hasW)) {
-	console.log("No default location data");
 	process.exit(0);
 }
 
