@@ -19,30 +19,27 @@ import moment from "moment-timezone";
 
 const timezone = moment.tz.guess()
 
-const hasN = ("n" in argv && !isNaN(argv["n"]));
-const hasS = ("s" in argv && !isNaN(argv["s"]));
-const hasE = ("e" in argv && !isNaN(argv["e"]));
-const hasW = ("w" in argv && !isNaN(argv["w"]));
-
-if ((!hasN && !hasS) || (!hasE && !hasW)) {
-	process.exit(0);
-}
-
 var n;
 if ("n" in argv) {
 	n = parseInt(argv["n"]);
-} else {
+	n = n.toFixed(2);
+} else if ("s" in argv) {
 	n = parseInt(argv["s"])*-1;
+	n = n.toFixed(2);
+} else {
+    console.log("Latitude must be in range");
 }
-n = n.toFixed(2);
 
 var e;
 if ("e" in argv) {
 	e = parseInt(argv["e"]);
-} else {
+	e = e.toFixed(2);
+} else if ("w" in argv) {
 	e = parseInt(argv["w"]);
+	e = e.toFixed(2);
+} else {
+    console.log("Longitude must be in range");
 }
-e = e.toFixed(2);
 
 var d;
 if ("d" in argv) {
@@ -62,13 +59,13 @@ var url = "https://api.open-meteo.com/v1/forecast?latitude=" + n + "&longitude="
 
 const response = await fetch(url);
 const data = await response.json();
-const rain = data.daily.precipitation_hours[d];
 
 if ("j" in argv) {
 	console.log(data);
 	process.exit(0);
 }
 
+const rain = data.daily.precipitation_hours[d];
 var output;
 if (rain == 0) {
 	output = "you will not need your galoshes ";
@@ -83,4 +80,5 @@ if (d == 0) {
 } else {
 	output += "in " + d + " days";
 }
+
 console.log(output);
