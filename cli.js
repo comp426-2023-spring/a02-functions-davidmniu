@@ -28,6 +28,7 @@ if ("n" in argv) {
 	n = n.toFixed(2);
 } else {
     console.log("Latitude must be in range");
+	process.exit(0);
 }
 
 var e;
@@ -39,6 +40,7 @@ if ("e" in argv) {
 	e = e.toFixed(2);
 } else {
     console.log("Longitude must be in range");
+	process.exit(0);
 }
 
 var d;
