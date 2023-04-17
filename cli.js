@@ -71,15 +71,17 @@ if ("j" in argv) {
 }
 
 if (rain == 0) {
-	console.log("you will not need your galoshes");
+	console.log("you will not need your galoshes ");
 } else {
 	var output = "you will need your galoshes ";
-	if (d == 0) {
-		output += "today";
-	} else if (d == 1) {
-		output += "tomorrow";
-	} else {
-		output += "in " + d + " days";
-	}
-	console.log(output);
+}
+
+if (d == 0) {
+	output += "today";
+} else if (d == 1) {
+	output += "tomorrow";
+} else {
+	output += "in " + d + " days";
+}
+console.log(output);
 }
