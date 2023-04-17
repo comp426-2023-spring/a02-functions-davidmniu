@@ -70,10 +70,11 @@ if ("j" in argv) {
 	process.exit(0);
 }
 
+var output;
 if (rain == 0) {
-	console.log("you will not need your galoshes ");
+	output = "you will not need your galoshes ";
 } else {
-	var output = "you will need your galoshes ";
+	output = "you will need your galoshes ";
 }
 
 if (d == 0) {
@@ -84,4 +85,3 @@ if (d == 0) {
 	output += "in " + d + " days";
 }
 console.log(output);
-}
